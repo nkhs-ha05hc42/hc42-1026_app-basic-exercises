@@ -1,0 +1,7 @@
+console.log('1234')
+console.log(0x1234)
+console.log(false)
+console.log(true)
+console.log([1234, 56])
+console.log(['a', 'b'])
+console.log([false, true])
