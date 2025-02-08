@@ -1,63 +1,21 @@
-import { Model } from "./model.mjs" 
- 
-const post9_7 = async (req, res) => { 
-  const name = req.body.name 
-  const age = req.body.age 
-  if (!name || !age) { 
-    return res.send(JSON.stringify({ status: "error" })) 
-  } 
-  const result = await Model.insertOne(name, age) 
-  res.send(JSON.stringify({ status: "success", data: result })) 
-} 
+import { examsModel } from "./q9_7_2Model.mjs";
 
+const getExamById = async (req, res) => {
+  const { id } = req.params;  // ← ここで取得します！
 
-const get19_7 = async (req, res) => { 
-    const id = req.params.id 
-    if (!id) { 
-      return res.send(JSON.stringify({ status: "error" })) 
-    } 
-    const result = await Model.selectOne(id) 
-    if (!result) { 
-      return res.send(JSON.stringify({ status: "not found" })) 
-    } 
-    res.send(JSON.stringify({ status: "success", data: result })) 
-  } 
-   
-  const getA9_7 = async (req, res) => { 
-    const result = await Model.selectA() 
-    res.send(JSON.stringify({ status: "success", list: result })) 
-  } 
+  try {
+    const exam = await examsModel.getExamById(id);
 
-  const put9_7 = async (req, res) => { 
-    const id = req.params.id 
-    const postcode = req.body.postcode 
-    const address = req.body.address 
-    if (!postcode || !address) { 
-      return res.send(JSON.stringify({ status: "error" })) 
-    } 
-    const result = await Model.updateOne(id, postcode, address) 
-    if (!result) { 
-      return res.send(JSON.stringify({ status: "not found" })) 
-    } 
-    res.send(JSON.stringify({ status: "success", data: result })) 
-  } 
+    if (!exam) {
+      return res.status(404).json({ status: "not found" });
+    }
 
-  const delete9_7 = async (req, res) => { 
-    const id = req.params.id 
-    if (!id) { 
-      return res.send(JSON.stringify({ status: "error" })) 
-    } 
-    const result = await sample2Model.deleteOne(id) 
-    if (!result) { 
-      return res.send(JSON.stringify({ status: "not found" })) 
-    } 
-    res.send(JSON.stringify({ status: "success", data: result })) 
-  } 
- 
-export const q9_7_Controller = { 
-  post9_7, 
-  get19_7,
-  getA9_7,
-  put9_7,
-  delete9_7, 
-} 
+    res.json({ status: "success", data: exam });
+  } catch (error) {
+    res.status(500).json({ status: "error", message: error.message });
+  }
+}
+
+export const examsController2 = {
+  getExamById,  // ← ルーターで呼び出す関数名
+}
