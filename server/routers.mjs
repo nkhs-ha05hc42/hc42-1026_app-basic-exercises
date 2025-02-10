@@ -2,12 +2,15 @@ import express from "express"
 import path from "path"
 import { sample1Controller } from "./api/controllers.mjs"
 import { 
-    sample1Controller,
     q8_1Controller,
     sample2Controller,
     q9_7_Controller,
-    q9_7_2_Controller
- } from "./api/controllers.mjs"
+    q9_7_2_Controller,
+    q9_7_3controller,
+    
+}from "./api/controllers.mjs"
+ 
+ 
 
 
 

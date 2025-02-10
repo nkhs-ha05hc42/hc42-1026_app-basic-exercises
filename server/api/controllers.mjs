@@ -2,7 +2,7 @@ export * from "./sample1/controller.mjs"
 export * from "./q8-1/q8_1Controller.mjs" 
 
 export * from "./sample2/controller.mjs" 
-export * from "./9-7/q9_7_controller.mjs" 
+export * from "./9-7/q9_7_3_controller.mjs" 
 export * from "./9-7/q9_7_2_controller.mjs" 
 
 export * from "./sample1/controller.mjs"
@@ -20,7 +20,7 @@ message: "メッセージを取得します",
 )
 }
 
-const putSample1 = (req, res) => {
+function putSample1(req, res) {
     console.log(req.body)
     res.send(JSON.stringify({ status: "success" }))
 }
