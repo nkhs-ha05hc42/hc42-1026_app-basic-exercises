@@ -1,4 +1,4 @@
-import { getClient, end } from "./api/db/manager.mjs"
+import { getClient, end } from "./db/manager.mjs"
 
 /*
  トランザクションを用いたSQLの実行例
